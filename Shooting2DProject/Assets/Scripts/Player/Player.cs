@@ -44,8 +44,8 @@ public class Player : MonoBehaviour
 
         // playerの動ける範囲を制御
         validPosition = new Vector3(
-            Mathf.Clamp(validPosition.x, -3.5f, 3.5f),
-            Mathf.Clamp(validPosition.y, -6f, 5f),
+            Mathf.Clamp(validPosition.x, -5f, 5f),
+            Mathf.Clamp(validPosition.y, -9f, 7.5f),
             validPosition.z
         );
 
