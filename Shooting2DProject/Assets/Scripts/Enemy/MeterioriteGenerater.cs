@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeterioriteGenerater : MonoBehaviour
 {
 
-    public GameObject meteriorite;
+    public GameObject[] meteriorites;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class MeterioriteGenerater : MonoBehaviour
             transform.position.z
             );
 
-        Instantiate(meteriorite, spawnPosition, transform.rotation);
+        Instantiate(meteriorites[Random.Range(0, meteriorites.Length)], spawnPosition, transform.rotation);
     }
 
 }

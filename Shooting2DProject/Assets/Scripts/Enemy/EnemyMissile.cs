@@ -23,7 +23,7 @@ public class EnemyMissile : MonoBehaviour
 
         if (collision.CompareTag("Player") == true)
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             Explosion();
             Destroy(gameObject);
         }

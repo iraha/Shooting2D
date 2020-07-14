@@ -9,16 +9,19 @@ public class Enemy : MonoBehaviour
     public GameObject explosion;
 
     Spaceship spaceship;
-    
-
-    //public GameObject missile;
 
     float offset;
+
+    // AddScore取得のため gameManagementを追加
+    GameManagement gameManagement;
 
     IEnumerator Start() 
     {
 
         spaceship = GetComponent<Spaceship>();
+
+        // gameManagementにヒエラルキー上のGemaMangement、Objectの中のGameManagementをGetComponentで取得
+        gameManagement = GameObject.Find("GameManagement").GetComponent<GameManagement>();
 
         offset = Random.Range(0, Mathf.PI);
 
@@ -75,6 +78,7 @@ public class Enemy : MonoBehaviour
         } // Enemyがmissileにぶつかった時のみAddscoreされ
         else if (collision.CompareTag("Enemy") == true)
         {
+            gameManagement.AddScore();
 
         }
 

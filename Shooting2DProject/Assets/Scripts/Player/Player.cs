@@ -9,14 +9,19 @@ public class Player : MonoBehaviour
     public Transform firePoint;
     public GameObject missile;
 
-
     public GameObject explosion;
 
+    // Playerの体力関連
+    private float health;
+    [SerializeField] float perCollision = 20;
+    [SerializeField] float startHealth = 100f;
 
 
     // missileを自動生成
     IEnumerator Start()
     {
+        health = startHealth;
+
         while (true)
         {
             Instantiate(missile, firePoint.position, transform.rotation);
@@ -55,11 +60,27 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) 
     {
 
+
         if (collision.CompareTag("Enemy") == true) 
         {
-            Destroy(collision.gameObject);
-            Explosion();
-            Destroy(gameObject);
+            health = health - perCollision;
+
+            if (health >= 1) 
+            {
+                Debug.Log(health);
+            }
+            else if (health <= 0) 
+            {
+                Debug.Log(health);
+                Destroy(collision.gameObject);
+                Explosion();
+                Destroy(gameObject);
+            }
+
+        }
+        else 
+        {
+
         }
 
     }
