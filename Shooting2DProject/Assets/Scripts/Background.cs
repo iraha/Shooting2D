@@ -5,14 +5,14 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     [SerializeField]
-    float speed = 1;
+    float speed = 7f;
 
     void Update()
     {
         transform.position -= new Vector3(0, Time.deltaTime * speed);
-        // if (transform.position.y <= -8.5f)
-        // {
-        //     transform.position = new Vector2(0, 13.0f);
-        // }
+        if (transform.position.y <= -40f)
+        {
+            transform.position = new Vector2(0, 40.0f);
+        }
     }
 }

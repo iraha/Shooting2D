@@ -38,6 +38,8 @@ public class Meteorite : MonoBehaviour
             Instantiate(explosion, collision.transform.position, transform.rotation);
             // Enemyにオブジェクトがあたったら、Explosionが生成
             Instantiate(explosion, transform.position, transform.rotation);
+            // Playerに当たると隕石が爆発
+            Destroy(gameObject);
 
         } // Enemyがmissileにぶつかった時のみAddscoreされる
         else if (collision.CompareTag("Enemy") == true)

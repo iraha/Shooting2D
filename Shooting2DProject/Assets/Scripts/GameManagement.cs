@@ -20,6 +20,7 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
 
         scoreText.text = "SCORE: " + score;
     }

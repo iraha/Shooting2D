@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]float speed = 5f;
+    [SerializeField]float speed = 8f;
 
     public Transform firePoint;
     public GameObject missile;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     // missileを自動生成
     IEnumerator Start()
     {
+        
         health = startHealth;
 
         while (true)
@@ -67,6 +68,8 @@ public class Player : MonoBehaviour
 
             if (health >= 1) 
             {
+                //Destroy(collision.gameObject);
+                //Explosion();
                 Debug.Log(health);
             }
             else if (health <= 0) 
@@ -75,6 +78,8 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 Explosion();
                 Destroy(gameObject);
+
+                FindObjectOfType<GameManagement>().GameOver();
             }
 
         }

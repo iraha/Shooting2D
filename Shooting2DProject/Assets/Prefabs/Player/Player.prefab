@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9134031272245091007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9134031272851091281}
@@ -146,9 +146,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e71c571143b46be9293928d93c3bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   firePoint: {fileID: 9134031272245091006}
   missile: {fileID: 7468477685020420164, guid: 8a96c9dd01a6140eda3e3aa197b1c653, type: 3}
+  explosion: {fileID: 5454293288506073075, guid: 9b2d79efd63f843818b0fd9f19d30cb4,
+    type: 3}
+  player: {fileID: 9134031272851091287}
+  perCollision: 20
+  startHealth: 100
 --- !u!61 &236166811
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -26,6 +26,9 @@ public class EnemyMissile : MonoBehaviour
             //Destroy(collision.gameObject);
             Explosion();
             Destroy(gameObject);
+            Destroy(collision.gameObject);
+
+            
         }
 
     }
