@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] float perCollision = 20;
     [SerializeField] float startHealth = 100f;
 
+    //GameManagement gameManagement;
+
 
     // missileを自動生成
     IEnumerator Start()
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Enemy") == true) 
         {
             health = health - perCollision;
+            FindObjectOfType<GameManagement>().AddScore();
 
             if (health >= 1) 
             {
@@ -83,9 +86,11 @@ public class Player : MonoBehaviour
             }
 
         }
-        else 
+        else if (collision.CompareTag("Recovery")) 
         {
-
+            health = health + 20;
+            Debug.Log("Health回復" + health);
+            Destroy(collision.gameObject);
         }
 
     }

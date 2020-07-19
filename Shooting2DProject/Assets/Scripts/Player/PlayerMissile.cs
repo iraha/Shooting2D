@@ -9,6 +9,8 @@ public class PlayerMissile : MonoBehaviour
 
     public GameObject explosion;
 
+    GameManagement gameManagement;
+
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +29,9 @@ public class PlayerMissile : MonoBehaviour
             Destroy(collision.gameObject);
             Explosion();
             Destroy(gameObject);
+
+            FindObjectOfType<GameManagement>().AddScore();
+
         }
 
     }

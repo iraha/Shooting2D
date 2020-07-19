@@ -9,6 +9,11 @@ public class Meteorite : MonoBehaviour
     [SerializeField] public GameObject explosion;
 
     float offset;
+
+    // AddScore取得のため gameManagementを追加
+    GameManagement gameManagement;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +46,10 @@ public class Meteorite : MonoBehaviour
             // Playerに当たると隕石が爆発
             Destroy(gameObject);
 
+
         } // Enemyがmissileにぶつかった時のみAddscoreされる
         else if (collision.CompareTag("Enemy") == true)
         {
-            //gameManagement.AddScore();
             
         }
 

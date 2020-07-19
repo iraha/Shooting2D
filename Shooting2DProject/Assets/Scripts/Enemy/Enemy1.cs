@@ -9,8 +9,8 @@ public class Enemy1 : MonoBehaviour
 
     Spaceship spaceship;
 
-
-    //public GameObject missile;
+    // AddScore取得のため gameManagementを追加
+    GameManagement gameManagement;
 
     float offset;
 
@@ -69,7 +69,10 @@ public class Enemy1 : MonoBehaviour
             // Playerと当たった時にもExplosionFXが生成されるように設定
             Instantiate(explosion, collision.transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
-            //FindObjectOfType<GameManagement>().GameOver();
+
+            Destroy(gameObject);
+
+            //gameManagement.AddScore();
 
         } // Enemyがmissileにぶつかった時のみAddscoreされ
         else if (collision.CompareTag("Enemy") == true)

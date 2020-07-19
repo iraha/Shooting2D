@@ -8,6 +8,8 @@ public class EnemyMissile : MonoBehaviour
 
     public GameObject explosion;
 
+    GameManagement gameManagement;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,11 +25,14 @@ public class EnemyMissile : MonoBehaviour
 
         if (collision.CompareTag("Player") == true)
         {
-            //Destroy(collision.gameObject);
+            
             Explosion();
             Destroy(gameObject);
-            Destroy(collision.gameObject);
-
+            //Destroy(collision.gameObject);
+            
+        }
+        else if (collision.CompareTag("Enemy") == true) 
+        {
             
         }
 

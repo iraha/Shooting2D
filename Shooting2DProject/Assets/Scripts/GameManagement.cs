@@ -17,6 +17,9 @@ public class GameManagement : MonoBehaviour
     // GameOver関連の関数
     public GameObject gameOverUI;
 
+    // GameClear関連の関数
+    public GameObject gameClearUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +36,7 @@ public class GameManagement : MonoBehaviour
 
     public void AddScore()
     {
-        score += 100;
+        score += 50;
 
         scoreText.text = "SCORE: " + score;
 
@@ -63,6 +66,25 @@ public class GameManagement : MonoBehaviour
         if (gameOverUI.activeSelf)
         {
             Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
+    }
+
+    public void GameClear()
+    {
+        gameClearUI.SetActive(true);
+
+        if (gameClearUI.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
 
     }

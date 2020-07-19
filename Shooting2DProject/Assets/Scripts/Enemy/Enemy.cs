@@ -73,22 +73,17 @@ public class Enemy : MonoBehaviour
             // Playerと当たった時にもExplosionFXが生成されるように設定
             Instantiate(explosion, collision.transform.position, transform.rotation);
             Instantiate(explosion, transform.position, transform.rotation);
-            //FindObjectOfType<GameManagement>().GameOver();
+
+            Destroy(gameObject);
+
+            gameManagement.AddScore();
+
 
         } // Enemyがmissileにぶつかった時のみAddscoreされ
         else if (collision.CompareTag("Enemy") == true)
         {
-            gameManagement.AddScore();
 
         }
-
-        // Enemyにミサイルが当たるとデストロイ
-        //Destroy(gameObject);
-
-        // Enemyにあったオブジェクトもデストロイ
-        //Destroy(collision.gameObject);
-
-        // Enemyにオブジェクトがあたったら、ExplosionFXが生成
 
     }
 
