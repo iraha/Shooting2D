@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class Player : MonoBehaviour
     public GameObject explosion;
 
     // Playerの体力関連
-    private float health;
+    private float currentHealth;
     [SerializeField] float perCollision = 20;
     [SerializeField] float startHealth = 100f;
+
+    public Slider slider;
+
 
     //GameManagement gameManagement;
 
@@ -22,8 +26,10 @@ public class Player : MonoBehaviour
     // missileを自動生成
     IEnumerator Start()
     {
-        
-        health = startHealth;
+        // sliderを定義
+        slider.value = 1;
+
+        currentHealth = startHealth;
 
         while (true)
         {
@@ -63,21 +69,23 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) 
     {
 
-
         if (collision.CompareTag("Enemy") == true) 
         {
-            health = health - perCollision;
+            currentHealth = currentHealth - perCollision;
+
             FindObjectOfType<GameManagement>().AddScore();
 
-            if (health >= 1) 
+            slider.value = currentHealth / startHealth;
+
+            if (currentHealth >= 1) 
             {
                 //Destroy(collision.gameObject);
                 //Explosion();
-                Debug.Log(health);
+                Debug.Log(currentHealth);
             }
-            else if (health <= 0) 
+            else if (currentHealth <= 0) 
             {
-                Debug.Log(health);
+                Debug.Log(currentHealth);
                 Destroy(collision.gameObject);
                 Explosion();
                 Destroy(gameObject);
@@ -88,8 +96,10 @@ public class Player : MonoBehaviour
         }
         else if (collision.CompareTag("Recovery")) 
         {
-            health = health + 20;
-            Debug.Log("Health回復" + health);
+            currentHealth = currentHealth + 20;
+            Debug.Log("Health回復" + currentHealth);
+
+            slider.value = currentHealth / startHealth;
             Destroy(collision.gameObject);
         }
 
