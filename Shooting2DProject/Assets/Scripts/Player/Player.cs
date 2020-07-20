@@ -71,6 +71,12 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("Enemy") == true) 
         {
+            if (currentHealth > 100f)
+            {
+                currentHealth = 100f;
+                Debug.Log(currentHealth);
+            }
+
             currentHealth = currentHealth - perCollision;
 
             FindObjectOfType<GameManagement>().AddScore();
@@ -97,6 +103,7 @@ public class Player : MonoBehaviour
         else if (collision.CompareTag("Recovery")) 
         {
             currentHealth = currentHealth + 20;
+            
             Debug.Log("Health回復" + currentHealth);
 
             slider.value = currentHealth / startHealth;
