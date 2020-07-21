@@ -11,7 +11,7 @@ public class RecoveryGenerater : MonoBehaviour
     {
 
         // InvokeRepeating("この関数を呼び出す", 秒後に, 秒刻みで)
-        InvokeRepeating("Spawn", 3f, 3f);
+        InvokeRepeating("Spawn", 10f, 10f);
         //Spawn();
     }
 

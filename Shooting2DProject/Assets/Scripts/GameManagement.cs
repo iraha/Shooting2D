@@ -23,7 +23,6 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
         scoreText.text = "SCORE: " + score;
     }
@@ -46,7 +45,7 @@ public class GameManagement : MonoBehaviour
     {
 
         gamePauseUI.SetActive(!gamePauseUI.activeSelf);
-
+        
         if (gamePauseUI.activeSelf)
         {
             // gamePauseUIが表示されている間はゲームを停止
@@ -62,10 +61,11 @@ public class GameManagement : MonoBehaviour
     public void GameOver()
     {
         gameOverUI.SetActive(true);
+        pauseButton.SetActive(false);
 
         if (gameOverUI.activeSelf)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0.3f;
         }
         else
         {
@@ -77,10 +77,11 @@ public class GameManagement : MonoBehaviour
     public void GameClear()
     {
         gameClearUI.SetActive(true);
+        pauseButton.SetActive(false);
 
         if (gameClearUI.activeSelf)
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0.3f;
         }
         else
         {
@@ -92,5 +93,6 @@ public class GameManagement : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1f;
     }
 }

@@ -8,7 +8,7 @@ public class Spaceship : MonoBehaviour
 {
 
     // 移動スピード
-    public float speed;
+    //public float speed;
 
     // ミサイルを撃つ間隔
     public float shotDelay;

@@ -26,10 +26,9 @@ public class PlayerMissile : MonoBehaviour
 
         if (collision.CompareTag("Enemy") == true)
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             Explosion();
             Destroy(gameObject);
-
             FindObjectOfType<GameManagement>().AddScore();
 
         }

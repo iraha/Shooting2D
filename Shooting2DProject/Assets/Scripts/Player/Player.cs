@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
             if (currentHealth > 100f)
             {
                 currentHealth = 100f;
-                Debug.Log(currentHealth);
+                //Debug.Log(currentHealth);
             }
 
             currentHealth = currentHealth - perCollision;
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
             {
                 //Destroy(collision.gameObject);
                 //Explosion();
-                Debug.Log(currentHealth);
+                //Debug.Log(currentHealth);
             }
             else if (currentHealth <= 0) 
             {
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         {
             currentHealth = currentHealth + 20;
             
-            Debug.Log("Health回復" + currentHealth);
+            //Debug.Log("Health回復" + currentHealth);
 
             slider.value = currentHealth / startHealth;
             Destroy(collision.gameObject);
