@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[System.Serializable]
+public class Missiles
+{
+    public GameObject rightMissile, leftMissile, centerMissile;
+    //[HideInInspector] public ParticleSystem leftGunVFX, rightGunVFX, centralGunVFX;
+}
+
 [System.Serializable]
 public class Borders
 {
@@ -31,6 +39,22 @@ public class Player : MonoBehaviour
 
     public GameObject recoveryEX;
 
+    // weapon 関連
+    public float fireRate = 5f;
+
+    [Tooltip("projectile prefab")]
+    public GameObject projectileObject;
+
+    //time for a new shot
+    [HideInInspector] public float nextFire;
+
+    [Range(1, 3)] public int weaponPower = 1;
+
+    public Missiles missiles;
+    bool shootingIsActive = true;
+    [HideInInspector] public int maxweaponPower = 3;
+
+
     // Playerの体力関連
     private float currentHealth;
     [SerializeField] float perCollision = 20;
@@ -51,11 +75,15 @@ public class Player : MonoBehaviour
         ResizeBorders();
         // sliderを定義
         slider.value = 1;
-
         currentHealth = startHealth;
 
+        // missilesコンポーネントを取得
+        missiles.leftMissile.GetComponent<GameObject>();
+        missiles.rightMissile.GetComponent<GameObject>();
+        missiles.centerMissile.GetComponent<GameObject>();
+
         // missileを自動生成
-        StartCoroutine(MissileShot());
+        //StartCoroutine(MissileShot());
 
     }
 
@@ -64,21 +92,29 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
 
+        if (shootingIsActive)
+        {
+            if (Time.time > nextFire)
+            {
+                MakeMissile();
+                nextFire = Time.time + 1 / fireRate;
+            }
+        }
+
     }
 
     // missileを自動生成
+    /*
     IEnumerator MissileShot() 
     {
         while (true)
         {
             Instantiate(missile, firePoint.position, transform.rotation);
             yield return new WaitForSeconds(0.15f);
-
             
-
-            //DestroyImmediate(missile, true);
         }
     }
+    */
 
     private void PlayerMovement()
     {
@@ -187,12 +223,15 @@ public class Player : MonoBehaviour
             slider.value = currentHealth / startHealth;
             Destroy(collision.gameObject);
         }
-        else if (collision.CompareTag("Weapon")) 
+        else if (collision.tag == "Weapon") 
         {
-            Debug.Log("ゲットWeapon");
-            
-            Invoke("MissileShot", 20);
+ 
+            if (weaponPower < maxweaponPower) 
+            {
+                weaponPower++;
+            }
             Destroy(collision.gameObject);
+            
 
         }
 
@@ -207,4 +246,34 @@ public class Player : MonoBehaviour
     {
         Instantiate(recoveryEX, transform.position, transform.rotation);
     }
+
+    void MakeMissile()
+    {
+        switch (weaponPower)
+        {
+            case 1:
+                MissileShot(projectileObject, missiles.centerMissile.transform.position, Vector3.zero);
+                //missiles.centerMissile.Play();
+                break;
+            case 2:
+                MissileShot(projectileObject, missiles.leftMissile.transform.position, Vector3.zero);
+                MissileShot(projectileObject, missiles.rightMissile.transform.position, Vector3.zero);
+                break;
+            case 3:
+                MissileShot(projectileObject, missiles.centerMissile.transform.position, Vector3.zero);
+                MissileShot(projectileObject, missiles.leftMissile.transform.position, Vector3.zero);
+                MissileShot(projectileObject, missiles.rightMissile.transform.position, Vector3.zero);
+                break;
+
+        }
+    }
+
+    void MissileShot(GameObject missile, Vector3 pos, Vector3 rot)
+    {
+
+        Instantiate(missile, pos, Quaternion.Euler(rot));
+
+    }
+
+
 }
