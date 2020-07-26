@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMissile : MonoBehaviour
 {
 
-    [SerializeField] float speed = 10f;
+    [SerializeField] float speed = 20f;
 
     public GameObject explosion;
 

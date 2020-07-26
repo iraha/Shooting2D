@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -10,6 +10,8 @@ public class Boss : MonoBehaviour
     private float currentHealth;
     [SerializeField] float perCollision = 20;
     [SerializeField] float startHealth = 1000f;
+
+    public Image healthBar;
 
 
     public GameObject explosion;
@@ -57,6 +59,8 @@ public class Boss : MonoBehaviour
         {
 
             currentHealth = currentHealth - perCollision;
+
+            healthBar.fillAmount = currentHealth / 1000f;
 
             if (currentHealth >= 1)
             {

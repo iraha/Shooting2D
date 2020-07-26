@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         currentHealth = startHealth;
 
         // missileを自動生成
-        StartCoroutine("MissileShot");
+        StartCoroutine(MissileShot());
 
     }
 
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+
     }
 
     // missileを自動生成
@@ -72,6 +73,8 @@ public class Player : MonoBehaviour
         {
             Instantiate(missile, firePoint.position, transform.rotation);
             yield return new WaitForSeconds(0.15f);
+
+            
 
             //DestroyImmediate(missile, true);
         }
