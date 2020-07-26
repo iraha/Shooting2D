@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 508640426}
   - component: {fileID: 508640428}
   - component: {fileID: 4303056401213653459}
+  - component: {fileID: 1232288322842776203}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -251,6 +252,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perCollision: 20
-  startHealth: 500
+  startHealth: 1000
   explosion: {fileID: 5454293288506073075, guid: 9b2d79efd63f843818b0fd9f19d30cb4,
     type: 3}
+--- !u!95 &1232288322842776203
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095509183794075562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50038785883524a618bdfbc893258899, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

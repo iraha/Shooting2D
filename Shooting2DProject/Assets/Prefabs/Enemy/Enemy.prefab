@@ -179,8 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d6106ecb05545e28a7da0ba547c8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  shotDelay: 2
+  shotDelay: 3
   missile: {fileID: 8599781369691731478, guid: 3b18c9f73639f4642b2a7c95df43bddd, type: 3}
   canShot: 1
 --- !u!114 &8970279663666494745
@@ -198,7 +197,6 @@ MonoBehaviour:
   speed: 0.5
   explosion: {fileID: 5454293288506073075, guid: 9b2d79efd63f843818b0fd9f19d30cb4,
     type: 3}
-  missile: {fileID: 8599781369691731478, guid: 3b18c9f73639f4642b2a7c95df43bddd, type: 3}
 --- !u!61 &4005842360101589679
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,12 @@ public class GameManagement : MonoBehaviour
     public Text scoreText;
     int score = 0;
 
+    // タイマー関連
+    public Text timerText;
+
+    public float gameTime = 60f;
+    int seconds;
+
     // Pause関連の関数
     public GameObject gamePauseUI;
     public GameObject pauseButton;
@@ -25,20 +31,38 @@ public class GameManagement : MonoBehaviour
     {
 
         scoreText.text = "SCORE: " + score;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        TimeManagement();
         //GamePause();
     }
 
     public void AddScore()
     {
         score += 50;
-
         scoreText.text = "SCORE: " + score;
 
+    }
+
+    // タイマーの設定
+    public void TimeManagement()
+    {
+
+        gameTime -= Time.deltaTime;
+        seconds = (int)gameTime;
+        timerText.text = seconds.ToString();
+
+        if (seconds == 0)
+        {
+            Debug.Log("TimeOut");
+            GameOver();
+            //GameClear();
+            //FindObjectOfType<GameOver>().EndGame();
+        }
     }
 
     public void GamePause()
@@ -93,6 +117,12 @@ public class GameManagement : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1f;
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
     }
 }
