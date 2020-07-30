@@ -45,6 +45,7 @@ public class Enemy1 : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+        Destroy(gameObject, 15f);
     }
 
     private void EnemyMovement()

@@ -24,6 +24,7 @@ public class Meteorite : MonoBehaviour
     void Update()
     {
         MeteoriteMovement();
+        Destroy(gameObject, 15f);
     }
 
     private void MeteoriteMovement()

@@ -10,6 +10,7 @@ public class WeaponUp : MonoBehaviour
     void Update()
     {
         WeaponUpMovement();
+        Destroy(gameObject, 15f);
     }
 
     private void WeaponUpMovement()

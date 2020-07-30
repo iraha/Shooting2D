@@ -60,7 +60,6 @@ public class GameManagement : MonoBehaviour
         {
             Debug.Log("TimeOut");
             GameOver();
-            //GameClear();
             //FindObjectOfType<GameOver>().EndGame();
         }
     }
