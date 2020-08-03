@@ -293,4 +293,4 @@ MonoBehaviour:
   maxweaponPower: 4
   perCollision: 20
   startHealth: 100
-  slider: {fileID: 0}
+  healthBar: {fileID: 0}

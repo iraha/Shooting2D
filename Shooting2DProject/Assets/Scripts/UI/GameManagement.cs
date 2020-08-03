@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManagement : MonoBehaviour
 {
     // スコア関連の関数
     public Text scoreText;
-    int score = 0;
+    int gameScore = 0;
 
     // タイマー関連
     public Text timerText;
@@ -26,11 +27,16 @@ public class GameManagement : MonoBehaviour
     // GameClear関連の関数
     public GameObject gameClearUI;
 
+    public GameObject healthBarBackground;
+
+    // ステージレベル関連
+    public int stageLevel;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        scoreText.text = "SCORE: " + score;
+        scoreText.text = "SCORE: " + gameScore;
 
     }
 
@@ -43,8 +49,8 @@ public class GameManagement : MonoBehaviour
 
     public void AddScore()
     {
-        score += 50;
-        scoreText.text = "SCORE: " + score;
+        gameScore += 50;
+        scoreText.text = "SCORE: " + gameScore;
 
     }
 
@@ -60,6 +66,7 @@ public class GameManagement : MonoBehaviour
         {
             Debug.Log("TimeOut");
             GameOver();
+            Time.timeScale = 1f;
             //FindObjectOfType<GameOver>().EndGame();
         }
     }
@@ -68,6 +75,7 @@ public class GameManagement : MonoBehaviour
     {
 
         gamePauseUI.SetActive(!gamePauseUI.activeSelf);
+        healthBarBackground.SetActive(false);
         
         if (gamePauseUI.activeSelf)
         {
@@ -78,6 +86,7 @@ public class GameManagement : MonoBehaviour
         {
             // gamePauseUIが表示されてなければ通常通り
             Time.timeScale = 1f;
+            healthBarBackground.SetActive(true);
         }
     }
 
@@ -85,6 +94,7 @@ public class GameManagement : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         pauseButton.SetActive(false);
+        healthBarBackground.SetActive(false);
 
         if (gameOverUI.activeSelf)
         {
@@ -101,6 +111,7 @@ public class GameManagement : MonoBehaviour
     {
         gameClearUI.SetActive(true);
         pauseButton.SetActive(false);
+        healthBarBackground.SetActive(false);
 
         if (gameClearUI.activeSelf)
         {
@@ -110,6 +121,8 @@ public class GameManagement : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+
+
 
     }
 
@@ -123,5 +136,22 @@ public class GameManagement : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
+    }
+
+    public void NextLevel() 
+    {
+        SceneManager.sceneLoaded += GameSceneLoaded;
+
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1f;
+    }
+
+    private void GameSceneLoaded(Scene next, LoadSceneMode mode)
+    {
+        // データを渡す処理
+        stageLevel = 100;
+
+        // イベントから削除
+        SceneManager.sceneLoaded -= GameSceneLoaded;
     }
 }

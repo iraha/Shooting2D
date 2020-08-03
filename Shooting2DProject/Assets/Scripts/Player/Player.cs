@@ -60,7 +60,11 @@ public class Player : MonoBehaviour
     [SerializeField] float perCollision = 20;
     [SerializeField] float startHealth = 100f;
 
-    public Slider slider;
+    public Image healthBar;
+
+    
+
+    //public Slider slider;
 
 
     private void Awake()
@@ -74,7 +78,7 @@ public class Player : MonoBehaviour
         mainCamera = Camera.main;
         ResizeBorders();
         // sliderを定義
-        slider.value = 1;
+        //slider.value = 1;
         currentHealth = startHealth;
 
         // missilesコンポーネントを取得
@@ -195,7 +199,9 @@ public class Player : MonoBehaviour
 
             FindObjectOfType<GameManagement>().AddScore();
 
-            slider.value = currentHealth / startHealth;
+            healthBar.fillAmount = currentHealth / 100f;
+
+            //slider.value = currentHealth / startHealth;
 
             if (currentHealth >= 1) 
             {
@@ -220,7 +226,8 @@ public class Player : MonoBehaviour
 
             //Debug.Log("Health回復" + currentHealth);
             RecoveryEX();
-            slider.value = currentHealth / startHealth;
+            healthBar.fillAmount = currentHealth / 100f;
+            //slider.value = currentHealth / startHealth;
             Destroy(collision.gameObject);
         }
         else if (collision.tag == "Weapon") 
