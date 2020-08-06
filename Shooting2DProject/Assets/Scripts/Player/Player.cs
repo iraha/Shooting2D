@@ -35,9 +35,11 @@ public class Player : MonoBehaviour
     public Transform firePoint;
     public GameObject missile;
 
-    public GameObject explosion;
+    public GameObject dieExplosion;
+    public GameObject damageExplosion;
 
     public GameObject recoveryEX;
+    public GameObject weaponUpEX;
 
     // weapon 関連
     public float fireRate = 5f;
@@ -205,6 +207,7 @@ public class Player : MonoBehaviour
 
             if (currentHealth >= 1) 
             {
+                DamageExplosion();
                 //Destroy(collision.gameObject);
                 //Explosion();
                 //Debug.Log(currentHealth);
@@ -213,7 +216,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log(currentHealth);
                 Destroy(collision.gameObject);
-                Explosion();
+                DieExplosion();
                 Destroy(gameObject);
 
                 FindObjectOfType<GameManagement>().GameOver();
@@ -237,6 +240,7 @@ public class Player : MonoBehaviour
             {
                 weaponPower++;
             }
+            WeaponUpEX();
             Destroy(collision.gameObject);
             
 
@@ -244,14 +248,25 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Explosion()
+    public void DieExplosion()
     {
-        Instantiate(explosion, transform.position, transform.rotation);
+        Instantiate(dieExplosion, transform.position, transform.rotation);
     }
+
+    public void DamageExplosion()
+    {
+        Instantiate(damageExplosion, transform.position, transform.rotation);
+    }
+
 
     public void RecoveryEX() 
     {
         Instantiate(recoveryEX, transform.position, transform.rotation);
+    }
+
+    public void WeaponUpEX()
+    {
+        Instantiate(weaponUpEX, transform.position, transform.rotation);
     }
 
     void MakeMissile()

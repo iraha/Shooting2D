@@ -14,7 +14,9 @@ public class Boss : MonoBehaviour
     public Image healthBar;
 
 
-    public GameObject explosion;
+    public GameObject bossDamageExplosion;
+    public GameObject bossDieExplosion;
+
     Spaceship spaceship;
 
     //float offset;
@@ -66,6 +68,7 @@ public class Boss : MonoBehaviour
             {
                 //Destroy(collision.gameObject);
                 //Explosion();
+                BossDamageExplosion();
                 Debug.Log(currentHealth);
             }
             else if (currentHealth <= 0)
@@ -73,7 +76,7 @@ public class Boss : MonoBehaviour
                 Debug.Log(currentHealth);
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
-                Instantiate(explosion, transform.position, transform.rotation);
+                BossDieExplosion();
 
                 FindObjectOfType<GameManagement>().GameClear();
             }
@@ -90,6 +93,17 @@ public class Boss : MonoBehaviour
         }
 
     }
+
+    private void BossDamageExplosion()
+    {
+        Instantiate(bossDamageExplosion, transform.position, transform.rotation);
+    }
+
+    private void BossDieExplosion()
+    {
+        Instantiate(bossDieExplosion, transform.position, transform.rotation);
+    }
+
 
 
 }

@@ -277,9 +277,13 @@ MonoBehaviour:
   speed: 20
   firePoint: {fileID: 9134031272245091006}
   missile: {fileID: 7468477685020420164, guid: 8a96c9dd01a6140eda3e3aa197b1c653, type: 3}
-  explosion: {fileID: 5454293288506073075, guid: 9b2d79efd63f843818b0fd9f19d30cb4,
+  dieExplosion: {fileID: 7987049073204829034, guid: bd3b17ce5c4824060bf92346048b221e,
+    type: 3}
+  damageExplosion: {fileID: 6714769611580722343, guid: 392e06a5a43b84573a559fbba75c8a55,
     type: 3}
   recoveryEX: {fileID: 5221289521931817179, guid: b1b911d6356d44badbf614902a1f0243,
+    type: 3}
+  weaponUpEX: {fileID: 191622248746080783, guid: 5f43c218312f649e3a51bc52b469b9f8,
     type: 3}
   fireRate: 5
   projectileObject: {fileID: 7468477685020420164, guid: 8a96c9dd01a6140eda3e3aa197b1c653,
