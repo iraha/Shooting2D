@@ -64,10 +64,9 @@ public class Player : MonoBehaviour
 
     public Image healthBar;
 
-    
+    //public float touchPos = -3f;
 
     //public Slider slider;
-
 
     private void Awake()
     {
@@ -197,8 +196,9 @@ public class Player : MonoBehaviour
                 //Debug.Log(currentHealth);
             }
 
-            currentHealth = currentHealth - perCollision;
+            Handheld.Vibrate();
 
+            currentHealth = currentHealth - perCollision;
             FindObjectOfType<GameManagement>().AddScore();
 
             healthBar.fillAmount = currentHealth / 100f;
@@ -207,6 +207,7 @@ public class Player : MonoBehaviour
 
             if (currentHealth >= 1) 
             {
+                Handheld.Vibrate();
                 DamageExplosion();
                 //Destroy(collision.gameObject);
                 //Explosion();

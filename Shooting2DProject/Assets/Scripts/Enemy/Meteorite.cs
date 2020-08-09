@@ -8,7 +8,7 @@ public class Meteorite : MonoBehaviour
     [SerializeField] public float speed = 2f;
     [SerializeField] public GameObject explosion;
 
-    float offset;
+    private float offset;
 
     // AddScore取得のため gameManagementを追加
     GameManagement gameManagement;
@@ -41,9 +41,9 @@ public class Meteorite : MonoBehaviour
         if (collision.CompareTag("Player") == true)
         {
             // Playerと当たった時にもExplosionFXが生成されるように設定
-            Instantiate(explosion, collision.transform.position, transform.rotation);
+            //Instantiate(explosion, collision.transform.position, transform.rotation);
             // Enemyにオブジェクトがあたったら、Explosionが生成
-            Instantiate(explosion, transform.position, transform.rotation);
+            MeteoriteExplosion();
             // Playerに当たると隕石が爆発
             Destroy(gameObject);
 
@@ -56,4 +56,8 @@ public class Meteorite : MonoBehaviour
 
     }
 
+    private void MeteoriteExplosion()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
+    }
 }

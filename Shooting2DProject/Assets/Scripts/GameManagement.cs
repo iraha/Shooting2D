@@ -29,6 +29,13 @@ public class GameManagement : MonoBehaviour
 
     public GameObject healthBarBackground;
 
+    // BGM関連
+    private AudioSource audioSource;
+    public AudioClip BGM;
+
+
+
+
     // ステージレベル関連
     //public GameObject guiObject;
     //public string levelToLoad;
@@ -38,7 +45,10 @@ public class GameManagement : MonoBehaviour
     {
 
         scoreText.text = "SCORE: " + gameScore;
-
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = BGM;
+        audioSource.Play();
+        
     }
 
     // Update is called once per frame
@@ -97,6 +107,8 @@ public class GameManagement : MonoBehaviour
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
 
+        audioSource.Stop();
+
         if (gameOverUI.activeSelf)
         {
             Time.timeScale = 0.3f;
@@ -114,6 +126,8 @@ public class GameManagement : MonoBehaviour
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
 
+        audioSource.Stop();
+
         if (gameClearUI.activeSelf)
         {
             Time.timeScale = 0.3f;
@@ -123,19 +137,17 @@ public class GameManagement : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-
-
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level01");
         Time.timeScale = 1f;
     }
 
     public void ToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }
 

@@ -13,7 +13,6 @@ public class Boss : MonoBehaviour
 
     public Image healthBar;
 
-
     public GameObject bossDamageExplosion;
     public GameObject bossDieExplosion;
 

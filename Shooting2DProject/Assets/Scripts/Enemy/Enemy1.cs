@@ -68,8 +68,8 @@ public class Enemy1 : MonoBehaviour
         if (collision.CompareTag("Player") == true)
         {
             // Playerと当たった時にもExplosionFXが生成されるように設定
-            Instantiate(explosion, collision.transform.position, transform.rotation);
-            Instantiate(explosion, transform.position, transform.rotation);
+            //Instantiate(explosion, collision.transform.position, transform.rotation);
+            DieExplosion();
 
             Destroy(gameObject);
 
@@ -89,5 +89,10 @@ public class Enemy1 : MonoBehaviour
 
         // Enemyにオブジェクトがあたったら、ExplosionFXが生成
 
+    }
+
+    private void DieExplosion()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
     }
 }
