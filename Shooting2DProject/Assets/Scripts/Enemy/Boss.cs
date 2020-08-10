@@ -77,7 +77,12 @@ public class Boss : MonoBehaviour
                 Destroy(gameObject);
                 BossDieExplosion();
 
+                // Level関連
+                gameManagement.WinLevel();
+                //PlayerPrefs.SetInt("Level1", 1);
+
                 FindObjectOfType<GameManagement>().GameClear();
+
             }
             // Playerと当たった時にもExplosionFXが生成されるように設定
             //Instantiate(explosion, collision.transform.position, transform.rotation);

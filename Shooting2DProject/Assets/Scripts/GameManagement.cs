@@ -26,21 +26,23 @@ public class GameManagement : MonoBehaviour
 
     // GameClear関連の関数
     public GameObject gameClearUI;
-
     public GameObject healthBarBackground;
+
+    // NextLevel関連
+    public string nextLevel = "Level2";
+    public int levelToUnlock = 2;
+
 
     // BGM関連
     private AudioSource audioSource;
     public AudioClip BGM;
 
-
-
-
+    public SceneFader sceneFader;
     // ステージレベル関連
     //public GameObject guiObject;
     //public string levelToLoad;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
 
@@ -48,6 +50,8 @@ public class GameManagement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM;
         audioSource.Play();
+
+        //nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
         
     }
 
@@ -106,7 +110,6 @@ public class GameManagement : MonoBehaviour
         gameOverUI.SetActive(true);
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
-
         audioSource.Stop();
 
         if (gameOverUI.activeSelf)
@@ -141,19 +144,38 @@ public class GameManagement : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("Level01");
+        //SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }
 
     public void ToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Level_Select");
         Time.timeScale = 1f;
     }
 
     public void NextLevel() 
     {
-        
+        //PlayerPrefs.SetInt("leveLReached", levelToUnlock);
+        /*
+        SceneManager.LoadScene(nextLevel);
+
+        if (nextLevel > PlayerPrefs.GetInt("levelAt")) 
+        {
+            PlayerPrefs.SetInt("levelAt", nextLevel);
+
+        }
+        */
+
+    }
+
+    public void WinLevel() 
+    {
+        Debug.Log("Level Win");
+        PlayerPrefs.SetInt("levelReached", levelToUnlock);
+        sceneFader.FadeTo(nextLevel);
+        Time.timeScale = 1f;
     }
 
 }

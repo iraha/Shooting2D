@@ -7,37 +7,31 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
 
-    [SerializeField] private bool unlocked;
-    public Image unlockImage;
+    public SceneFader fader;
 
-    private void Update() 
-    {
-        UpdateLevelImage();
-    }
-    
+    public Button[] levelButtons;
 
-    private void UpdateLevelImage() 
+    void Start() 
     {
 
-        if (!unlocked) 
+        int levelReached = PlayerPrefs.GetInt("levelReached", 1);
+
+        for (int i = 0; i < levelButtons.Length; i++) 
         {
-            unlockImage.gameObject.SetActive(true);
-        }
-        else
-        {
-            unlockImage.gameObject.SetActive(false);
+            if (i+1 > levelReached) 
+            {
+                levelButtons[i].interactable = false;
+            }
+            
         }
 
+        //PlayerPrefs.Save();
+        
     }
 
-    public void PressSelection(string _LevelName) 
+    public void Select (string levelName) 
     {
-        if (unlocked) 
-        {
-            SceneManager.LoadScene(_LevelName);
-        }
+        fader.FadeTo(levelName);
     }
-
-
 
 }

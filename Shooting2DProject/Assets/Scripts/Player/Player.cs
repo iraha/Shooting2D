@@ -196,8 +196,6 @@ public class Player : MonoBehaviour
                 //Debug.Log(currentHealth);
             }
 
-            Handheld.Vibrate();
-
             currentHealth = currentHealth - perCollision;
             FindObjectOfType<GameManagement>().AddScore();
 
@@ -215,6 +213,7 @@ public class Player : MonoBehaviour
             }
             else if (currentHealth <= 0) 
             {
+                Handheld.Vibrate();
                 Debug.Log(currentHealth);
                 Destroy(collision.gameObject);
                 DieExplosion();
