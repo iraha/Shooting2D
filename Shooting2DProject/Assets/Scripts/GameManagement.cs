@@ -151,14 +151,23 @@ public class GameManagement : MonoBehaviour
 
     public void ToMenu()
     {
-        SceneManager.LoadScene("Level_Select");
+        SceneManager.LoadScene("Level_Selection");
         Time.timeScale = 1f;
     }
 
+    public void WinLevel()
+    {
+        Debug.Log("Level Win");
+        PlayerPrefs.SetInt("levelReached", levelToUnlock);
+        sceneFader.FadeTo(nextLevel);
+        Time.timeScale = 1f;
+    }
+
+    /*
     public void NextLevel() 
     {
         //PlayerPrefs.SetInt("leveLReached", levelToUnlock);
-        /*
+        
         SceneManager.LoadScene(nextLevel);
 
         if (nextLevel > PlayerPrefs.GetInt("levelAt")) 
@@ -166,16 +175,8 @@ public class GameManagement : MonoBehaviour
             PlayerPrefs.SetInt("levelAt", nextLevel);
 
         }
-        */
 
     }
-
-    public void WinLevel() 
-    {
-        Debug.Log("Level Win");
-        PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo(nextLevel);
-        Time.timeScale = 1f;
-    }
+    */
 
 }

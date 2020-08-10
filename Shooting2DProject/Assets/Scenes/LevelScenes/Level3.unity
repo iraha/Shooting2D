@@ -595,8 +595,8 @@ MonoBehaviour:
   gameOverUI: {fileID: 1547938516}
   gameClearUI: {fileID: 1701147123}
   healthBarBackground: {fileID: 291609649}
-  nextLevel: Level3
-  levelToUnlock: 3
+  nextLevel: Level2
+  levelToUnlock: 2
   BGM: {fileID: 8300000, guid: 301a58b2eef504c92b3f58f0c4c09ccb, type: 3}
   sceneFader: {fileID: 362967699}
 --- !u!4 &261160188
