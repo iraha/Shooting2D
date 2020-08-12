@@ -597,6 +597,14 @@ MonoBehaviour:
   healthBarBackground: {fileID: 291609649}
   nextLevel: Level2
   levelToUnlock: 2
+  Player: {fileID: 9134031272851091287, guid: 071228631512b4525bcb683607be322c, type: 3}
+  Enemy0: {fileID: 8970279663666494740, guid: fc483ac88d8f746e985c6dd41119b0a7, type: 3}
+  Enemy1: {fileID: 5127129800590610652, guid: a987956db882d4b6dafd0590d0931999, type: 3}
+  Meteorite1: {fileID: 6327536120238732334, guid: ef89549cba52e4d6b917d7715dce7356,
+    type: 3}
+  Meteorite2: {fileID: 5904356932506380794, guid: d0f2ad46473b8420b8845d561787fb60,
+    type: 3}
+  Boss: {fileID: 2095509183794075562, guid: 37ee02ebffa634615a3a611a13f16c77, type: 3}
   BGM: {fileID: 8300000, guid: 301a58b2eef504c92b3f58f0c4c09ccb, type: 3}
   sceneFader: {fileID: 362967699}
 --- !u!4 &261160188
@@ -805,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &291609650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1944,7 +1952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &843915866
 Transform:
   m_ObjectHideFlags: 0
@@ -2061,7 +2069,7 @@ PrefabInstance:
     - target: {fileID: 9134031272851091287, guid: 071228631512b4525bcb683607be322c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9134031272851091281, guid: 071228631512b4525bcb683607be322c,
         type: 3}
@@ -2118,11 +2126,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9134031272851091283, guid: 071228631512b4525bcb683607be322c,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 973253864}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071228631512b4525bcb683607be322c, type: 3}
 --- !u!1 &1274854281

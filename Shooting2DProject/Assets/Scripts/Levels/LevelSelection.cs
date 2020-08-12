@@ -10,6 +10,7 @@ public class LevelSelection : MonoBehaviour
     public SceneFader fader;
 
     public Button[] levelButtons;
+    public GameObject unlockImage;
 
     void Start() 
     {
@@ -21,11 +22,12 @@ public class LevelSelection : MonoBehaviour
             if (i+1 > levelReached) 
             {
                 levelButtons[i].interactable = false;
+                
             }
             
         }
 
-        //PlayerPrefs.Save();
+        PlayerPrefs.Save();
         
     }
 

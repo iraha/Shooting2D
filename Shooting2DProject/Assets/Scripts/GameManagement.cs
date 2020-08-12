@@ -32,6 +32,19 @@ public class GameManagement : MonoBehaviour
     public string nextLevel = "Level2";
     public int levelToUnlock = 2;
 
+    // Player関連
+    public GameObject Player;
+
+    // Enemy関連
+    public GameObject Enemy0;
+    public GameObject Enemy1;
+
+    // Meteorite
+    public GameObject Meteorite1;
+    public GameObject Meteorite2;
+
+    // Boss関連
+    public GameObject Boss;
 
     // BGM関連
     private AudioSource audioSource;
@@ -45,11 +58,19 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-
+        // UI関連
         scoreText.text = "SCORE: " + gameScore;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM;
         audioSource.Play();
+
+        // オブジェクト関連
+        Player.SetActive(true);
+        Enemy0.SetActive(true);
+        Enemy1.SetActive(true);
+        Meteorite1.SetActive(true);
+        Meteorite2.SetActive(true);
+        Boss.SetActive(true);
 
         //nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
         
@@ -107,9 +128,18 @@ public class GameManagement : MonoBehaviour
 
     public void GameOver()
     {
+        // UI関連
         gameOverUI.SetActive(true);
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
+
+        // Enemy関連
+        Enemy0.SetActive(false);
+        Enemy1.SetActive(false);
+        Boss.SetActive(false);
+        Meteorite1.SetActive(false);
+        Meteorite2.SetActive(false);
+
         audioSource.Stop();
 
         if (gameOverUI.activeSelf)
@@ -128,6 +158,8 @@ public class GameManagement : MonoBehaviour
         gameClearUI.SetActive(true);
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
+
+        Player.SetActive(false);
 
         audioSource.Stop();
 
