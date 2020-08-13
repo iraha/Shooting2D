@@ -728,8 +728,8 @@ MonoBehaviour:
   gameOverUI: {fileID: 1547938516}
   gameClearUI: {fileID: 1701147123}
   healthBarBackground: {fileID: 291609649}
-  nextLevel: Level2
-  levelToUnlock: 2
+  nextLevel: Level3
+  levelToUnlock: 3
   Player: {fileID: 9134031272851091287, guid: 071228631512b4525bcb683607be322c, type: 3}
   Recovery: {fileID: 7332970598533347487, guid: 40bdbf9d16e5d43b78252f81044a80e3,
     type: 3}
@@ -2296,7 +2296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Level 1
+  m_Text: Level 2
 --- !u!222 &689593173
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -17,6 +17,9 @@ public class GameManagement : MonoBehaviour
     public float gameTime = 60f;
     int seconds;
 
+    // GameStart関連
+    public GameObject gameStartUI;
+
     // Pause関連の関数
     public GameObject gamePauseUI;
     public GameObject pauseButton;
@@ -34,6 +37,10 @@ public class GameManagement : MonoBehaviour
 
     // Player関連
     public GameObject Player;
+
+    // Recoveryと
+    public GameObject Recovery;
+    public GameObject WeaponUp;
 
     // Enemy関連
     public GameObject Enemy0;
@@ -58,6 +65,8 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
+
+        Time.timeScale = 0f;
         // UI関連
         scoreText.text = "SCORE: " + gameScore;
         audioSource = GetComponent<AudioSource>();
@@ -66,6 +75,9 @@ public class GameManagement : MonoBehaviour
 
         // オブジェクト関連
         Player.SetActive(true);
+        Recovery.SetActive(true);
+        WeaponUp.SetActive(true);
+
         Enemy0.SetActive(true);
         Enemy1.SetActive(true);
         Meteorite1.SetActive(true);
@@ -107,6 +119,25 @@ public class GameManagement : MonoBehaviour
         }
     }
 
+    public void GameStartUI()
+    {
+
+        gameStartUI.SetActive(!gameStartUI.activeSelf);
+        //healthBarBackground.SetActive(false);
+
+        if (gameStartUI.activeSelf)
+        {
+            // gamePauseUIが表示されている間はゲームを停止
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            // gamePauseUIが表示されてなければ通常通り
+            Time.timeScale = 1f;
+            //healthBarBackground.SetActive(true);
+        }
+    }
+
     public void GamePause()
     {
 
@@ -132,6 +163,10 @@ public class GameManagement : MonoBehaviour
         gameOverUI.SetActive(true);
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
+
+        // Player関連
+        Recovery.SetActive(false);
+        WeaponUp.SetActive(false);
 
         // Enemy関連
         Enemy0.SetActive(false);
@@ -159,7 +194,18 @@ public class GameManagement : MonoBehaviour
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
 
+        // Player関連
         Player.SetActive(false);
+        Recovery.SetActive(false);
+        WeaponUp.SetActive(false);
+
+        // Enemy関連
+        Enemy0.SetActive(false);
+        Enemy1.SetActive(false);
+        Boss.SetActive(false);
+        Meteorite1.SetActive(false);
+        Meteorite2.SetActive(false);
+
 
         audioSource.Stop();
 

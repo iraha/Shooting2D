@@ -27,8 +27,10 @@ public class LevelSelection : MonoBehaviour
             
         }
 
-        PlayerPrefs.Save();
-        
+        //PlayerPrefs.Save();
+        PlayerPrefs.DeleteAll();
+
+
     }
 
     public void Select (string levelName) 
