@@ -37,6 +37,7 @@ public class GameManagement : MonoBehaviour
 
     // Player関連
     public GameObject Player;
+    BoxCollider2D boxCollider2D;
 
     // Recoveryと
     public GameObject Recovery;
@@ -74,6 +75,8 @@ public class GameManagement : MonoBehaviour
         audioSource.Play();
 
         // オブジェクト関連
+        boxCollider2D = Player.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
         Player.SetActive(true);
         Recovery.SetActive(true);
         WeaponUp.SetActive(true);
@@ -195,7 +198,9 @@ public class GameManagement : MonoBehaviour
         healthBarBackground.SetActive(false);
 
         // Player関連
-        Player.SetActive(false);
+        //Player.SetActive(false);
+        boxCollider2D = Player.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = false;
         Recovery.SetActive(false);
         WeaponUp.SetActive(false);
 
