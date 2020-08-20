@@ -50,11 +50,11 @@ public class Player : MonoBehaviour
     //time for a new shot
     [HideInInspector] public float nextFire;
 
-    [Range(1, 3)] public int weaponPower = 1;
+    [Range(1, 4)] public int weaponPower = 1;
 
     public Missiles missiles;
     bool shootingIsActive = true;
-    [HideInInspector] public int maxweaponPower = 3;
+    [HideInInspector] public int maxweaponPower = 4;
 
 
     // Playerの体力関連
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     [SerializeField] float startHealth = 100f;
 
     public Image healthBar;
+    
 
     //public float touchPos = -3f;
 
@@ -285,6 +286,13 @@ public class Player : MonoBehaviour
                 MissileShot(projectileObject, missiles.centerMissile.transform.position, Vector3.zero);
                 MissileShot(projectileObject, missiles.leftMissile.transform.position, Vector3.zero);
                 MissileShot(projectileObject, missiles.rightMissile.transform.position, Vector3.zero);
+                break;
+            case 4:
+                MissileShot(projectileObject, missiles.centerMissile.transform.position, Vector3.zero);
+                MissileShot(projectileObject, missiles.leftMissile.transform.position, new Vector3(0, 0, 5));
+                MissileShot(projectileObject, missiles.rightMissile.transform.position, new Vector3(0, 0, -5));
+                MissileShot(projectileObject, missiles.leftMissile.transform.position, new Vector3(0, 0, 15));
+                MissileShot(projectileObject, missiles.rightMissile.transform.position, new Vector3(0, 0, -15));
                 break;
 
         }
