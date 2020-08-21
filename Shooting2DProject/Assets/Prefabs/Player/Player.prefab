@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1049536592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -546,4 +546,4 @@ MonoBehaviour:
   maxweaponPower: 4
   perCollision: 20
   startHealth: 100
-  healthBar: {fileID: 1613289723}
+  healthBar: {fileID: 0}
