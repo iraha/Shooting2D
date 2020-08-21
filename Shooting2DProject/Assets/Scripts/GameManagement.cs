@@ -66,13 +66,16 @@ public class GameManagement : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-
         Time.timeScale = 0f;
+
+
         // UI関連
         scoreText.text = "SCORE: " + gameScore;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM;
         audioSource.Play();
+        pauseButton.SetActive(false);
+        healthBarBackground.SetActive(false);
 
         // オブジェクト関連
         boxCollider2D = Player.GetComponent<BoxCollider2D>();
@@ -118,6 +121,8 @@ public class GameManagement : MonoBehaviour
             Debug.Log("TimeOut");
             GameOver();
             Time.timeScale = 1f;
+
+            gameTime = 0f;
             //FindObjectOfType<GameOver>().EndGame();
         }
     }
@@ -126,7 +131,7 @@ public class GameManagement : MonoBehaviour
     {
 
         gameStartUI.SetActive(!gameStartUI.activeSelf);
-        //healthBarBackground.SetActive(false);
+        //Time.timeScale = 0f;
 
         if (gameStartUI.activeSelf)
         {
@@ -137,7 +142,8 @@ public class GameManagement : MonoBehaviour
         {
             // gamePauseUIが表示されてなければ通常通り
             Time.timeScale = 1f;
-            //healthBarBackground.SetActive(true);
+            pauseButton.SetActive(true);
+            healthBarBackground.SetActive(true);
         }
     }
 
@@ -210,6 +216,10 @@ public class GameManagement : MonoBehaviour
         Boss.SetActive(false);
         Meteorite1.SetActive(false);
         Meteorite2.SetActive(false);
+
+        FindObjectOfType<Player>().PlayerWin();
+
+        
 
 
         audioSource.Stop();

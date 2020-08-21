@@ -63,7 +63,12 @@ public class Player : MonoBehaviour
     [SerializeField] float startHealth = 100f;
 
     public Image healthBar;
-    
+
+    // amimation関連
+    Animator goalAnim;
+    bool goal;
+
+
 
     //public float touchPos = -3f;
 
@@ -77,6 +82,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+
+        goalAnim = gameObject.GetComponent<Animator>();
+        goal = false;
+
+
         mainCamera = Camera.main;
         ResizeBorders();
         // sliderを定義
@@ -84,6 +94,8 @@ public class Player : MonoBehaviour
         currentHealth = startHealth;
 
         // missilesコンポーネントを取得
+        projectileObject.SetActive(true);
+
         missiles.leftMissile.GetComponent<GameObject>();
         missiles.rightMissile.GetComponent<GameObject>();
         missiles.centerMissile.GetComponent<GameObject>();
@@ -220,7 +232,13 @@ public class Player : MonoBehaviour
                 DieExplosion();
                 Destroy(gameObject);
 
+                //PlayerWin();
+
+                //Debug.log("Player Win");
+                Debug.Log("PlayerWin");
+
                 FindObjectOfType<GameManagement>().GameOver();
+                
             }
 
         }
@@ -246,6 +264,39 @@ public class Player : MonoBehaviour
             
 
         }
+
+    }
+
+    public void PlayerWin()
+    {
+
+        //rb.bodyType = RigidbodyType2D.Dynamic;
+
+        //rb.AddForce(new Vector3(0, forwardForce * Time.deltaTime, 0));
+        /*
+        if (goal == true)
+        {
+            goalAnim.SetBool("Player", true);
+        }
+        */
+        goal = true;
+        goalAnim.SetBool("Player", true);
+
+
+        Vector3 GoalPosition = transform.position + new Vector3(0, 0, 0) * Time.deltaTime * 2f;
+        GoalPosition = new Vector3(
+            Mathf.Clamp(GoalPosition.x, 0, 0) * Time.deltaTime * 2f,
+            Mathf.Clamp(GoalPosition.y, 0, 0) * Time.deltaTime * 2f,
+            GoalPosition.z
+        );
+
+        transform.position = GoalPosition;
+
+
+        projectileObject.SetActive(false);
+
+
+        Debug.Log("PlayerWin");
 
     }
 

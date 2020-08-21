@@ -2687,6 +2687,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 973253864}
+    - target: {fileID: 236166811, guid: 071228631512b4525bcb683607be322c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071228631512b4525bcb683607be322c, type: 3}
 --- !u!1 &1324980891
@@ -3082,6 +3086,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438540189}
   m_CullTransparentMesh: 0
+--- !u!1 &1468415965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9134031272851091287, guid: 071228631512b4525bcb683607be322c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1306644117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1468415966
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468415965}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72a6a73c1dbcb43abaa2ba684af55d9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1539788115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3704,7 @@ GameObject:
   - component: {fileID: 1675122705}
   - component: {fileID: 1675122704}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3745,7 +3774,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 261160187}
-        m_MethodName: Retry
+        m_MethodName: ToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4289,7 +4318,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RETRY
+  m_Text: MENU
 --- !u!222 &1855755197
 CanvasRenderer:
   m_ObjectHideFlags: 0
