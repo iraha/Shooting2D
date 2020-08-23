@@ -65,6 +65,9 @@ public class Player : MonoBehaviour
     public Image healthBar;
 
     // amimation関連
+    //bool alreadyPlaying = false;
+
+
     Animator goalAnim;
     bool goal;
 
@@ -86,6 +89,8 @@ public class Player : MonoBehaviour
         goalAnim = gameObject.GetComponent<Animator>();
         goal = false;
 
+        //goalPlayerAnim.SetBool("playerGoal", true);
+
 
         mainCamera = Camera.main;
         ResizeBorders();
@@ -103,11 +108,14 @@ public class Player : MonoBehaviour
         // missileを自動生成
         //StartCoroutine(MissileShot());
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         PlayerMovement();
 
         if (shootingIsActive)
@@ -233,11 +241,31 @@ public class Player : MonoBehaviour
                 Destroy(gameObject);
 
                 //PlayerWin();
-
-                //Debug.log("Player Win");
+                projectileObject.SetActive(false);
                 Debug.Log("PlayerWin");
 
                 FindObjectOfType<GameManagement>().GameOver();
+
+                Vector3 GoalPosition = transform.position + new Vector3(0, 0, 0) * Time.deltaTime * 2f;
+                GoalPosition = new Vector3(
+                    Mathf.Clamp(GoalPosition.x, 0, 0) * Time.deltaTime * 2f,
+                    Mathf.Clamp(GoalPosition.y, 0, 0) * Time.deltaTime * 2f,
+                    GoalPosition.z
+                );
+                transform.position = GoalPosition;
+
+                // animation関連
+
+                if (goal == true)
+                {
+                    goalAnim.SetBool("goalAnim", true);
+                }
+
+                //goalPlayerAnim.SetBool("playerGoal", true);
+
+                //animator.SetTrigger("playerGoal");
+
+                
                 
             }
 
@@ -270,33 +298,8 @@ public class Player : MonoBehaviour
     public void PlayerWin()
     {
 
-        //rb.bodyType = RigidbodyType2D.Dynamic;
 
-        //rb.AddForce(new Vector3(0, forwardForce * Time.deltaTime, 0));
-        /*
-        if (goal == true)
-        {
-            goalAnim.SetBool("Player", true);
-        }
-        */
-        goal = true;
-        goalAnim.SetBool("Player", true);
-
-
-        Vector3 GoalPosition = transform.position + new Vector3(0, 0, 0) * Time.deltaTime * 2f;
-        GoalPosition = new Vector3(
-            Mathf.Clamp(GoalPosition.x, 0, 0) * Time.deltaTime * 2f,
-            Mathf.Clamp(GoalPosition.y, 0, 0) * Time.deltaTime * 2f,
-            GoalPosition.z
-        );
-
-        transform.position = GoalPosition;
-
-
-        projectileObject.SetActive(false);
-
-
-        Debug.Log("PlayerWin");
+        
 
     }
 

@@ -31,6 +31,8 @@ public class GameManagement : MonoBehaviour
     public GameObject gameClearUI;
     public GameObject healthBarBackground;
 
+    //public bool gameClearUI2;
+
     // NextLevel関連
     public string nextLevel = "Level2";
     public int levelToUnlock = 2;
@@ -116,12 +118,12 @@ public class GameManagement : MonoBehaviour
         seconds = (int)gameTime;
         timerText.text = seconds.ToString();
 
+
         if (seconds == 0)
         {
             Debug.Log("TimeOut");
             GameOver();
             Time.timeScale = 1f;
-
             gameTime = 0f;
             //FindObjectOfType<GameOver>().EndGame();
         }
@@ -188,7 +190,7 @@ public class GameManagement : MonoBehaviour
 
         if (gameOverUI.activeSelf)
         {
-            Time.timeScale = 0.3f;
+            Time.timeScale = 0.2f;
         }
         else
         {
@@ -200,8 +202,10 @@ public class GameManagement : MonoBehaviour
     public void GameClear()
     {
         gameClearUI.SetActive(true);
+        gameOverUI.SetActive(false);
         pauseButton.SetActive(false);
         healthBarBackground.SetActive(false);
+
 
         // Player関連
         //Player.SetActive(false);
@@ -226,7 +230,8 @@ public class GameManagement : MonoBehaviour
 
         if (gameClearUI.activeSelf)
         {
-            Time.timeScale = 0.3f;
+            Time.timeScale = 0.2f;
+
         }
         else
         {
@@ -252,7 +257,7 @@ public class GameManagement : MonoBehaviour
     {
         Debug.Log("Level Win");
         PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo(nextLevel);
+        SceneManager.LoadScene(nextLevel);
         Time.timeScale = 1f;
     }
 

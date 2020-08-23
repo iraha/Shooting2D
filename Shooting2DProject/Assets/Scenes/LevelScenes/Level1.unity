@@ -2687,6 +2687,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 973253864}
+    - target: {fileID: 1468415966, guid: 071228631512b4525bcb683607be322c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 236166811, guid: 071228631512b4525bcb683607be322c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3086,31 +3090,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438540189}
   m_CullTransparentMesh: 0
---- !u!1 &1468415965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9134031272851091287, guid: 071228631512b4525bcb683607be322c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1306644117}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1468415966
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468415965}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 72a6a73c1dbcb43abaa2ba684af55d9b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1539788115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4112,7 +4091,7 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectColor: {r: 0, g: 0.69912136, b: 0.754717, a: 0.5}
   m_EffectDistance: {x: 15, y: -15}
   m_UseGraphicAlpha: 1
 --- !u!1 &1823394009
