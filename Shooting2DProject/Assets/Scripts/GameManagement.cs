@@ -13,7 +13,6 @@ public class GameManagement : MonoBehaviour
 
     // タイマー関連
     public Text timerText;
-
     public float gameTime = 60f;
     int seconds;
 
@@ -61,15 +60,12 @@ public class GameManagement : MonoBehaviour
     public AudioClip BGM;
 
     public SceneFader sceneFader;
-    // ステージレベル関連
-    //public GameObject guiObject;
-    //public string levelToLoad;
+
 
     // Start is called before the first frame update 
     void Start()
     {
         Time.timeScale = 0f;
-
 
         // UI関連
         scoreText.text = "SCORE: " + gameScore;
@@ -201,6 +197,10 @@ public class GameManagement : MonoBehaviour
 
     public void GameClear()
     {
+        gameTime += Time.deltaTime;
+        seconds = (int)gameTime;
+        timerText.text = seconds.ToString();
+
         gameClearUI.SetActive(true);
         gameOverUI.SetActive(false);
         pauseButton.SetActive(false);
@@ -221,10 +221,7 @@ public class GameManagement : MonoBehaviour
         Meteorite1.SetActive(false);
         Meteorite2.SetActive(false);
 
-        FindObjectOfType<Player>().PlayerWin();
-
-        
-
+        //FindObjectOfType<Player>().PlayerWin();
 
         audioSource.Stop();
 
@@ -260,21 +257,5 @@ public class GameManagement : MonoBehaviour
         SceneManager.LoadScene(nextLevel);
         Time.timeScale = 1f;
     }
-
-    /*
-    public void NextLevel() 
-    {
-        //PlayerPrefs.SetInt("leveLReached", levelToUnlock);
-        
-        SceneManager.LoadScene(nextLevel);
-
-        if (nextLevel > PlayerPrefs.GetInt("levelAt")) 
-        {
-            PlayerPrefs.SetInt("levelAt", nextLevel);
-
-        }
-
-    }
-    */
 
 }

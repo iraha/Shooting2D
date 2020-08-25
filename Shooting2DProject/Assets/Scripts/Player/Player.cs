@@ -242,7 +242,7 @@ public class Player : MonoBehaviour
 
                 //PlayerWin();
                 projectileObject.SetActive(false);
-                Debug.Log("PlayerWin");
+                //Debug.Log("PlayerWin");
 
                 FindObjectOfType<GameManagement>().GameOver();
 
@@ -292,14 +292,6 @@ public class Player : MonoBehaviour
             
 
         }
-
-    }
-
-    public void PlayerWin()
-    {
-
-
-        
 
     }
 

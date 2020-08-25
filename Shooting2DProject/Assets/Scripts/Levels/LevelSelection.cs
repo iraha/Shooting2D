@@ -7,13 +7,21 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
 
-    public SceneFader fader;
+    //public SceneFader fader;
 
+    // levelのボタン
     public Button[] levelButtons;
-    public GameObject unlockImage;
+
+    // Loading関連
+    [SerializeField] private Text loadingText;
+    [SerializeField] Slider slider;
+
+    public GameObject LoadingUI;
 
     void Start() 
     {
+
+        LoadingUI.SetActive(false);
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
@@ -21,21 +29,37 @@ public class LevelSelection : MonoBehaviour
         {
             if (i+1 > levelReached) 
             {
-                levelButtons[i].interactable = false;
-                
+                levelButtons[i].interactable = false;       
             }
             
         }
-
-        //PlayerPrefs.Save();
-        PlayerPrefs.DeleteAll();
-
-
+        PlayerPrefs.Save();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void Select (string levelName) 
     {
-        fader.FadeTo(levelName);
+        //fader.FadeTo(levelName);
+        SceneManager.LoadScene(levelName);
+        LoadingUI.SetActive(true);
+
+    }
+
+    private IEnumerator BeginLoading(string levelName) 
+    {
+        //LoadingUI.SetActive(true);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(levelName);
+        
+
+        while (!operation.isDone) 
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            slider.value = progress;
+            //Debug.Log(progress);
+            
+            yield return null;
+        }
+
     }
 
 }
