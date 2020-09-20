@@ -5,6 +5,7 @@ using UnityEngine;
 public class RecoveryGenerater : MonoBehaviour
 {
     public GameObject recovery;
+    
 
     // Start is called before the first frame update
     void Start()
